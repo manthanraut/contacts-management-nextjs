@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Contact Management Next.js
+
+A small contact management app built while learning Next.js App Router.
+
+The app uses JSONPlaceholder as a fake REST API, so it can demonstrate real async data fetching without needing a database setup. It includes a contacts list, contact detail pages, runtime search, loading states, error handling, and a custom not found screen.
+
+## Features
+
+- Home page with navigation to contacts
+- Contacts list fetched from a REST API
+- Contact detail pages using dynamic routes
+- Runtime contact search while typing
+- Shared contacts layout
+- Loading UI with skeleton placeholders
+- Route-level error UI with retry
+- Contact-specific not found page
+- Reusable contact UI components
+- Centralized REST API helpers in `lib/contacts.ts`
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- JSONPlaceholder REST API
+
+## Project Structure
+
+```txt
+app/
+  page.tsx
+  contacts/
+    page.tsx
+    layout.tsx
+    loading.tsx
+    error.tsx
+    contacts-list.tsx
+    _components/
+      contact-card.tsx
+      contact-details.tsx
+    [id]/
+      page.tsx
+      not-found.tsx
+lib/
+  contacts.ts
+```
+
+## Learning Concepts
+
+This project is intentionally small, but it covers important Next.js ideas:
+
+- File-based routing with the `app` directory
+- Nested routes such as `/contacts` and `/contacts/[id]`
+- Dynamic route params
+- Server Components for data fetching
+- Client Components for interactive UI
+- Passing server-fetched data into client components
+- Route-level `loading.tsx`
+- Route-level `error.tsx`
+- Segment-specific `not-found.tsx`
+- Reusable components
+- Separating REST API logic from UI code
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```txt
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Useful Scripts
 
-## Learn More
+```bash
+npm run dev
+npm run lint
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## API Source
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contact data comes from:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```txt
+https://jsonplaceholder.typicode.com/users
+```
 
-## Deploy on Vercel
+The API layer is centralized in:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```txt
+lib/contacts.ts
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+That keeps the UI independent from the exact external API response shape.
